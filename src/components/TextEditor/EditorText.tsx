@@ -14,6 +14,7 @@ import ImgPost from "../../images/addpost.svg"
 import { ModalSlice, positionTextModal, typeModal } from '../../store/reducers/Modal';
 import { setImagePreview } from '../../hooks/previewImage';
 import { LoaderSlice } from '../../store/reducers/Loader';
+import { useNavigate } from "react-router-dom";
 
 const EditorText = () =>{
   const [ header , setHeader ] = useState("")
@@ -31,6 +32,7 @@ const EditorText = () =>{
   const { setModal }  = ModalSlice.actions;
   // const { setEditor } = editorSlice.actions;
   const { ActiveLoader , UnActiveLoader } = LoaderSlice.actions;
+  const navigate = useNavigate();
 
   const dispatch = useAppDispatch()
   
@@ -204,9 +206,8 @@ const EditorText = () =>{
           return
 
         } else {
-          document.location.href = `/post/${result}`
+          navigate("/");
         }
-
       })
 
     }).catch((error:any) => {
