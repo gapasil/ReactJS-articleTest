@@ -1,0 +1,13 @@
+@import "../../variableScss/background.scss";
+.wrapp {
+    padding: $padding-default;
+    display: flex;
+    justify-content: center;
+}
+
+@media (max-width: 500px) {
+    .wrapp {
+        padding: $padding-mobile;
+    }
+}
+

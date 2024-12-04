@@ -85,9 +85,6 @@ export const Burger = ({propVisibleBurger,callBack}:prop) => {
         set(Math.random())
       },10)
     }
-    const reload = () =>{
-      setTimeout(()=>{location.reload()},200)
-    }
 
     return (
       <div 

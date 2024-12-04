@@ -36,12 +36,11 @@ export const LoginPage = ({callBack}: login) => {
         localStorage.setItem("token", result.token)
         callBack()
         navigate("/")
-      } else {
+      } else {        
         if(!result.message){
           setError([result])
           return
         }        
-        
         setError([result.message])
       }
     })
@@ -52,7 +51,7 @@ export const LoginPage = ({callBack}: login) => {
       <div className='containerLogin__loginBlock'>
         <div className='containerLogin__loginBlock__login'>
           {error.map((value:any)=>(
-            <h5>{value}</h5>
+            <h5 style={{color: "red"}}>* {value}</h5>
           ))}
           <p>Email или номер телефона</p>
           <Input
@@ -66,7 +65,7 @@ export const LoginPage = ({callBack}: login) => {
           <Input 
             value={inputPass} 
             onChange={setInputPass}
-            type="password"
+            types="password"
             img={passwordImg.default}
           />
         </div>

@@ -1,10 +1,8 @@
-import React from 'react'
-const setingImg = require("./setting.png") 
-const burgerImg = require("./burger.png")
-const messageImg = require("./message.png")
-const plusImg = require("./plus.png")
-const searchImg = require("./search.png")
-const userImg = require("./user.png")
+import setingImg from "./setting.png";
+import burgerImg from "./burger.png";
+import messageImg from "./message.png";
+import plusImg from "./plus.png";
+import searchImg from "./search.png";
+import userImg from "./user.png";
 
-
-export { setingImg, burgerImg, messageImg, plusImg, searchImg, userImg }
+export { setingImg, burgerImg, messageImg, plusImg, searchImg, userImg };

@@ -12,7 +12,7 @@ import ListNum from './tool/ListNum';
 import List from './tool/List'
 import Strikethrough from './inlineTool/strikethrough/Strikethrough';
 
-const configuration = ( type:string, data?:any ): any  => {
+const configuration = ( type:string ): any  => {
 
   if(type == "editor")
   {
@@ -184,16 +184,15 @@ const configuration = ( type:string, data?:any ): any  => {
       placeholder: 'Нажмите Tab для открытия списка с блоками.',
     })
   }
-  if(type == "view" && data)
+  if(type === "view")
   {
     return ({
-      holder:"editorjs",
       tools: { 
         header: {
           class: Header , 
           inlineToolbar: ['link'],
         }, 
-        ListNum: { 
+        listNum: { 
           class: ListNum, 
           inlineToolbar: true 
         },
@@ -235,12 +234,11 @@ const configuration = ( type:string, data?:any ): any  => {
           class: Strikethrough,
         }
       },
-      data:data,
       readOnly: true,
       placeholder: 'Нажмите Tab для открытия списка с блоками.',
     })
   }
-  else{
+  else {
     return ({
       holder:"editorjs",
       tools: {

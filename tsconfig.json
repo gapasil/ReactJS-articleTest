@@ -1,26 +1,26 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "module": "es6",
-    "sourceMap": true,
-    "noImplicitAny": true,
-    "outDir": "./public/",
+    "target": "esnext",        // Используем esnext, чтобы поддерживать последние стандарты
+    "module": "esnext",        // Используем esnext для совместимости с Webpack
+    "sourceMap": true,         // Включаем карты исходников
+    "noImplicitAny": true,     // Рекомендуется всегда включать для строгой типизации
+    "outDir": "./dist",        // Указываем папку для выходных файлов (Webpack всё равно компилирует их в bundle)
     "lib": [
       "dom",
       "dom.iterable",
       "esnext"
     ],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "react-jsx"
+    "allowJs": true,           // Разрешаем использование JS в проекте
+    "skipLibCheck": true,      // Ускоряет сборку за счёт пропуска проверки библиотек
+    "esModuleInterop": true,   // Упрощает работу с модулями CommonJS
+    "allowSyntheticDefaultImports": true, // Разрешаем импорты по умолчанию
+    "strict": true,            // Включаем строгую типизацию
+    "forceConsistentCasingInFileNames": true, // Обеспечивает консистентность в именах файлов
+    "noFallthroughCasesInSwitch": true,      // Противопоставляемся ошибкам в switch
+    "moduleResolution": "node", // Разрешение модулей с использованием Node
+    "resolveJsonModule": true,  // Разрешаем импорты JSON файлов
+    "isolatedModules": true,    // Убираем проблемы с интеропом в изолированных модулях
+    "jsx": "react-jsx"         // JSX синтаксис для React 17+
   },
   "include": ["src", "index.d.ts"]
 }

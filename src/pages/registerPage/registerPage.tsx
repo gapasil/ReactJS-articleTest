@@ -128,6 +128,7 @@ export const RegisterPage = ({callBack}:reg) => {
             value={inputPass} 
             onChange={setInputPass}
             img={passwordImg.default}
+            types='password'
           />
           <p>Длинна пароля не меньше 4 и не больше 16</p>
         </div>

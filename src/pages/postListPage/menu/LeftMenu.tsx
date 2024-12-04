@@ -37,14 +37,14 @@ export const LeftMenu = () => {
               </Link>
   
               <Link
-                to={"/"}
+                to={"/support"}
               >
                   <Img4/>
                   <p>О Сайте</p>
               </Link>
   
               <Link
-                to={"/"}
+                to={"/support"}
               >
                   <Img5/>
                   <p>Обратная связь</p>
@@ -52,7 +52,7 @@ export const LeftMenu = () => {
   
           </div>
   
-          <div className={style.container__linksFooter}>
+          {/* <div className={style.container__linksFooter}>
   
               <Link
                 to={"/"}
@@ -78,7 +78,7 @@ export const LeftMenu = () => {
               <DemoL4/>
               </Link>
   
-          </div>
+          </div> */}
       </div>
     )
   } else {

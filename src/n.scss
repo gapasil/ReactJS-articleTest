@@ -6,7 +6,10 @@
 *::after {
   box-sizing: border-box;
 }
-
+p {
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+}
 /* Убираем внутренние отступы */
 ul[class],
 ol[class] {

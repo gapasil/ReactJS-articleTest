@@ -1,19 +1,30 @@
 import React , { createRef } from 'react'
 import "./input.scss"
 
-interface input {
-  img?         : string;
-  placeholder? : string;
-  onChange?    : Function;
-  value?       : string;
-  type?        : string;
-  ref?         : React.RefObject<HTMLInputElement>;
-  maxLength?   : number;
-  typeStyle?   : string;
-  children?     : any
+interface InputProps {
+  img?: string;
+  placeholder?: string;
+  onChange?: (value: string) => void;
+  value?: string;
+  types?: string;
+  ref?: React.RefObject<HTMLInputElement>;
+  maxLength?: number;
+  typeStyle?: string;
+  children?: React.ReactNode;
 }
 
-export const Input = ({img, placeholder, onChange, value, type, ref , maxLength , typeStyle , children}:input) => {
+export const Input = ({
+  img,
+  placeholder,
+  onChange,
+  value,
+  types = 'text', // Значение по умолчанию для types
+  ref,
+  maxLength = 10000, // Значение по умолчанию для maxLength
+  typeStyle = '', // Значение по умолчанию для typeStyle
+  children,
+}: InputProps) => {
+
   const inputRef:React.RefObject<HTMLInputElement> = createRef();
 
   if(typeStyle == "1")
@@ -25,7 +36,7 @@ export const Input = ({img, placeholder, onChange, value, type, ref , maxLength 
           <input
             placeholder={placeholder}
             value={value}
-            type={type}
+            type={types}
             ref={ref?ref:inputRef}
             maxLength={maxLength?maxLength:10000}
             onChange={(e)=>onChange(e.target.value)}
@@ -38,20 +49,13 @@ export const Input = ({img, placeholder, onChange, value, type, ref , maxLength 
           {children}
           <input
             placeholder={placeholder}
-            type={type}
+            type={types}
             ref={ref?ref:inputRef}
             maxLength={maxLength?maxLength:10000}
           />
         </div>
       )
     }
-  }
-  if(!typeStyle)
-  {
-    typeStyle = ""
-  }
-  if(!type){
-    type = "text"
   }
   if(!img){
     if(onChange){
@@ -60,7 +64,7 @@ export const Input = ({img, placeholder, onChange, value, type, ref , maxLength 
           <input
             placeholder={placeholder}
             value={value}
-            type={type}
+            type={types}
             ref={ref?ref:inputRef}
             maxLength={maxLength?maxLength:10000}
             onChange={(e)=>onChange(e.target.value)}
@@ -72,7 +76,7 @@ export const Input = ({img, placeholder, onChange, value, type, ref , maxLength 
         <div className={`CustomInputBlock${typeStyle}`}>
           <input
             placeholder={placeholder}
-            type={type}
+            type={types}
             ref={ref?ref:inputRef}
             maxLength={maxLength?maxLength:10000}
           />
@@ -89,7 +93,7 @@ export const Input = ({img, placeholder, onChange, value, type, ref , maxLength 
           <input
             placeholder={placeholder}
             value={value}
-            type={type}
+            type={types}
             ref={ref?ref:inputRef}
             maxLength={maxLength?maxLength:10000}
             onChange={(e)=>onChange(e.target.value)}
@@ -104,7 +108,7 @@ export const Input = ({img, placeholder, onChange, value, type, ref , maxLength 
           />
           <input
             placeholder={placeholder}
-            type={type}
+            type={types}
             ref={ref?ref:inputRef}
             maxLength={maxLength?maxLength:10000}
           />

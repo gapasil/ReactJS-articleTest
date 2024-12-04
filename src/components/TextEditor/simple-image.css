@@ -1,7 +1,9 @@
 
 
   /* стили инструментов */
-
+.codex-editor__redactor {
+    padding-bottom: 0px !important;
+}
 .displayNone{
     display: none;
 }

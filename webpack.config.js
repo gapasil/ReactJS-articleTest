@@ -1,9 +1,17 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
+const sass = require('sass');
+
+sass.render({
+  silenceDeprecations: ['legacy-js-api', 'import'],
+}, function(err, result) {
+  // ...
+});
 
 module.exports = {
   devtool: 'inline-source-map',
+  stats: 'errors-warnings',
 
   mode: 'none',
 
@@ -27,39 +35,46 @@ module.exports = {
             // Translates CSS into CommonJS
             "css-loader",
             // Compiles Sass to CSS
-            "sass-loader",
+            {
+              loader: 'sass-loader',
+              options: {
+                sassOptions: {
+                  quietDeps: true,  // Отключает предупреждения для зависимостей
+                  silent: true,
+                  api: 'modern', // or "modern"
+                  silenceDeprecations: ["legacy-js-api", 'import'],
 
+                },
+              },
+            },
           ],
         },
+        {
+          test: /\.svg$/,
+          use: ['@svgr/webpack'],  // Преобразует SVG в компонент React
+        },        
         {
           test: /\.css$/i,
           use: ["style-loader", "css-loader"],
         },
         {
           test: /\.tsx?$/,
-          use: 'ts-loader',
-          exclude: '/node_modules/'
+          use: {
+            loader: 'ts-loader',
+          },
+          exclude: /node_modules/,
         },
         {
-          exclude: "/node_modules/",
-          test: /\.png$/,
-          use: ['file-loader'],
-        },
-        {
-          exclude: "/node_modules/",
-          test: /\.jpg$/,
-          use: ['file-loader'],
-        },
-        {
-          test: /\.svg$/,
-          use: ['@svgr/webpack'],
-        },
+          test: /\.(png|jpg|jpeg|gif)$/i,
+          type: 'asset/resource', // Используйте встроенный функционал Webpack вместо `file-loader`
+        },        
         {
           test: /\.js$/,
           exclude: "/node_modules/",
           loader: 'babel-loader',
           options:{
-              presets: ['@babel/preset-env']
+              presets: ['@babel/preset-env'],
+              cacheDirectory: true, 
           }
         }
       ],
@@ -73,7 +88,7 @@ module.exports = {
       new HtmlWebpackPlugin({
         template: path.join(__dirname, 'public', 'index.html')
       }),
-      new Dotenv()
+      new Dotenv(),
   ],
   devServer: {
     historyApiFallback: true,

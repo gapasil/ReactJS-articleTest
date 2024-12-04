@@ -16,7 +16,8 @@
         width: 90%;
     }
     h1{
-        word-break: break-all ;
+        word-break: normal; /* Отключает разрыв слов внутри */
+        overflow-wrap: break-word; /* Перенос только целых слов */
         color: $color-text-head;
         font-family: $f3Header;
     };
@@ -80,7 +81,8 @@
             display: flex;
             justify-content: center;
             flex-direction: column;
-
+            gap: 5px;
+            
             &__flname{
 
                 display: flex;

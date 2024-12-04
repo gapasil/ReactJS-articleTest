@@ -127,7 +127,7 @@ const EditorText = () =>{
       //   imageView:imageView
       // })
       
-      formData.append("body",JSON.stringify(outputData))
+      formData.append("body", JSON.stringify(outputData))
 
       if(theme)
       formData.append("theme",theme)

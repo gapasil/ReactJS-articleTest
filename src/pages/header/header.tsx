@@ -16,18 +16,10 @@ import { userImg } from "./img/images"
 import { LinkButton } from '../../components/link/Link'
 import  Logo  from "../../images/logo.svg"
 import  AddImg from "../../images/add.svg"
-import  BurgerIcon from "../../images/burger.svg"
-import  Search from "../../images/search.svg"
-import {burgerSlice} from '../../store/reducers/Burger';
 
 export const Header = () => {
   // const [visibleBurger, setVisibleBurger] = useState(false)
   // const [visibleMain, setVisibleMain] = useState(false)
-
-  const { ActiveBurger, UnActiveBurger } = burgerSlice.actions;
-  const dispatch = useAppDispatch()
-
-  const burgerState = useAppSelector(state => state.burgerReducer)
   const user = useAppSelector(state => state.userReducer)
 
   // //бургер меню в мобильной версий меньше 860px
@@ -45,14 +37,6 @@ export const Header = () => {
     return (
       <div className='Header'>
         <div className='Header__blockLeft'>
-          <button 
-            onClick={()=>{
-              dispatch(burgerState.active? UnActiveBurger() : ActiveBurger())
-            }}
-            style={{height:"22px"}}
-          >
-            <BurgerIcon/>
-          </button>
           <Link
             to={"/"}
             style={{zIndex:100,display:"flex",alignItems:"center"}}
@@ -86,14 +70,6 @@ export const Header = () => {
     return (
       <div className='Header'>
       <div className='Header__blockLeft'>
-        <button 
-          onClick={()=>{
-            dispatch(burgerState.active? UnActiveBurger() : ActiveBurger())
-          }}
-          style={{height:"22px"}}
-        >
-          <BurgerIcon/>
-        </button>
         <Link
           to={"/"}
           style={{zIndex:100,display:"flex",alignItems:"center"}}
@@ -119,7 +95,7 @@ export const Header = () => {
           <div className='Header__containerCenter__center__blockUserDefault'>
             <Link to="/login">
               <img 
-                src={userImg.default}
+                src={userImg}
               />
             </Link>
           </div>
